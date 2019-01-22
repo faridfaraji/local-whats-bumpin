@@ -18,12 +18,12 @@ class UserLocation extends Component {
   
   componentDidMount = async() =>{
     this._getLocationAsync();
-    /*await Location.startLocationUpdatesAsync("firstTask", {
+    await Location.startLocationUpdatesAsync("firstTask", {
         accuracy: Location.Accuracy.Balanced,
-    });*/
-    //this.setState({ locationResult: JSON.stringify(location)});
+    });
+    this.setState({ locationResult: JSON.stringify(location)});
 
- 
+
   }
 
 
