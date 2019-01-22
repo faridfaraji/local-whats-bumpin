@@ -1,11 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { MapView } from 'expo';
+import { StyleSheet, Text, View, Menu } from 'react-native';
 import UserLocation from './components/userloc.js'
 
 export default class App extends React.Component {
   render() {
-   return <UserLocation/>;
+
+
+   return (
+   <UserLocation/>
+   
+    );
     
   }
 }

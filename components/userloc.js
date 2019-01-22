@@ -21,7 +21,6 @@ class UserLocation extends Component {
     await Location.startLocationUpdatesAsync("firstTask", {
         accuracy: Location.Accuracy.Balanced,
     });
-    this.setState({ locationResult: JSON.stringify(location)});
 
 
   }
