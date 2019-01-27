@@ -4,7 +4,7 @@ import { Constants, Location, Permissions,TaskManager} from 'expo';
 import { MapView } from 'expo';
 
 
-class UserLocation extends Component {
+class Venues extends Component {
     constructor(props) {
         super(props);
      this.state = { location: {coords: { latitude: 49.292, longitude: -123.116226}},
@@ -13,29 +13,7 @@ class UserLocation extends Component {
     };}
  
 
-  
-  componentDidMount = async() =>{
-    this._getLocationAsync();
-    await Location.startLocationUpdatesAsync("firstTask", {
-        accuracy: Location.Accuracy.Balanced,
-    });
 
-
-  }
-
-
-  _getLocationAsync = async () => {
-    let { status } = await Permissions.askAsync(Permissions.LOCATION);
-    if (status !== 'granted') {
-      this.setState({
-        locationResult: 'Permission to access location was denied',
-        location,
-      });
-    }
-    let curlocation = await Location.getCurrentPositionAsync({});
-    this.setState({ locationResult: JSON.stringify(curlocation) }); 
-    this.setState({ location: curlocation });  
-};
 
 
 
@@ -52,14 +30,6 @@ class UserLocation extends Component {
             longitudeDelta: 0.0421,
           }}
         >
-        <MapView.Circle
-            center = {{ latitude: this.state.location.coords.latitude, 
-              longitude: this.state.location.coords.longitude+0.002 }}
-            radius = { global.radius }
-            color = "#4F6D7A"
-            strokeColor = "#4F6D7A"
-            strokeWidth = { 2 }
-        />
         <MapView.Marker
         style={{width:10}} 
         coordinate={this.state.location.coords}
@@ -68,7 +38,7 @@ class UserLocation extends Component {
         //image ={require(custom_marker1)}
        >
        <Image
-       source = {require(custom_marker1)}
+       source = {require(custom_marker2)}
        style={{width:35, height:35}}
        ></Image>
 
@@ -79,22 +49,12 @@ class UserLocation extends Component {
         </Text>
       
       </MapView>
-
       );
   }
 }
 
 
-TaskManager.defineTask("firstTask", ({ data, error }) => {
-    if (error) {
-      // Error occurred - check `error.message` for more details.
-      return;
-    }
-    if (data) {
-        const locations  = data;
-      // do something with the locations captured in the background
-    }
-  });
+
   
 
   const styles = StyleSheet.create({
@@ -111,5 +71,4 @@ TaskManager.defineTask("firstTask", ({ data, error }) => {
 });
 
 
-
-export default UserLocation
+export default Venues
